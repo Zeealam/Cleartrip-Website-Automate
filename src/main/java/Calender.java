@@ -38,7 +38,7 @@ public class Calender {
 		destinationOptions.get(0).click();
 
 		// Calling Method for Calender
-		cal(29, 5, 2018);
+		cal(29, 12, 2023);
 
 	}
 
@@ -47,15 +47,19 @@ public class Calender {
 		// month  bec in website month is starting from 0 so we need to give month
 		month--;
 		int count = 1;
-		while (count <= 11) {
+		while (count <= 20) {
 			try {
-				driver.findElement(By.xpath("//td[@data-month='" + month + "'and @data-year='" + year + "']/a[text()='" + date + "']")).click();
+				driver.findElement(By.xpath("//td[@data-month='"+month +"'and @data-year='" + year + "']/a[text()='" + date + "']")).click();
 				break;
 			} catch (Exception e) {
 				// It will click on next button
 				driver.findElement(By.xpath(" //div[@id='ui-datepicker-div']/div[2]/div/a[@class='nextMonth ' and @title='Next']")).click();
 				count++;
-				e.printStackTrace();
+				
+				if(count>20) {
+					System.out.println("Invalid Input");
+				}
+				
 			}
 
 		}
